@@ -59,7 +59,15 @@ jobs:
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
         cmakeGenerator: 'Ninja'
         cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
-        buildWithCMakeArgs: '-- -v'
+        buildWithCMakeArgs: '--target all -- -v'
         buildDirectory: '${{ github.workspace }}/build/'
         useShell: bash
 
+    - name: run unit tests
+      run: |
+        pwd
+        ls -l
+        ls -l build
+        ls -l build/bin
+        echo ${{ github.workspace }}/build/bin/unit_tests
+        ${{ github.workspace }}/build/bin/unit_tests
