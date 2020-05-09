@@ -57,6 +57,6 @@ jobs:
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        cmakeAppendedArgs: '-GNinja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
+        cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
         buildWithCMakeArgs: '-- -v'
         buildDirectory: '${{ github.workspace }}/build/'
