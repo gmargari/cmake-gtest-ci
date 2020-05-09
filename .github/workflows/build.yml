@@ -57,8 +57,7 @@ jobs:
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        cmakeGenerator: 'Ninja'
-        cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
+        cmakeAppendedArgs: '-GNinja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
         buildWithCMakeArgs: '--target all -- -v'
         buildDirectory: '${{ github.workspace }}/build/'
         useShell: bash
