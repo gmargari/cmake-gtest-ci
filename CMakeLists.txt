@@ -1,34 +1,12 @@
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required(VERSION 3.8)
 
-project ("myproject")
+project(my-cpp-project)
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# place binaries and libraries according to GNU standards
+include(GNUInstallDirs)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
-#===============================================================================
-# Source files
-#===============================================================================
-set(SRC_DIR "src")
-include_directories(${SRC_DIR})
-
-set(SRC_MATH_DIR "${SRC_DIR}/math")
-set(SRC_MATH_FILES
-	${SRC_MATH_DIR}/add.cpp
-	${SRC_MATH_DIR}/multiply.cpp
-)
-
-#===============================================================================
-# Static libraries and executables
-#===============================================================================
-# Static library "mathlib"
-add_library("mathlib" STATIC
-	${SRC_MATH_FILES}
-)
-
-# Executable "mybin"
-add_executable("mybin"
-	${SRC_DIR}/main.cpp
-)
-target_link_libraries("mybin"
-                      PRIVATE "mathlib")
-
+include_directories(src)
+add_subdirectory(src)
