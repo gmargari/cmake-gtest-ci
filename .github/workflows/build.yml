@@ -53,10 +53,13 @@ jobs:
         CC: ${{ matrix.cc }}
 
     - name: configure and build
-      uses: lukka/run-cmake@v2
+      uses: lukka/run-cmake@v2.3
       with:
         cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
         cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
+        cmakeGenerator: 'Ninja'
         cmakeAppendedArgs: '-DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
         buildWithCMakeArgs: '-- -v'
         buildDirectory: '${{ github.workspace }}/build/'
+        useShell: bash
+
