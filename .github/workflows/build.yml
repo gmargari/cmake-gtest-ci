@@ -13,37 +13,53 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: [ubuntu-gcc, macos-clang, windows-msvc, ubuntu-clang]
+        name: [ubuntu-gcc, ubuntu-clang, macos-gcc, macos-clang, windows-msvc]
         #name: [ubuntu-gcc]
         # For Windows msvc, for Linux and macOS let's use the clang compiler, use gcc for Linux.
         include:
-          - name: windows-msvc
-            os: windows-latest
-            os_label: Windows
-            cxx: cl.exe
-            cc: cl.exe
           - name: ubuntu-clang
             os: ubuntu-latest
             os_label: Ubuntu
             cxx: clang++
             cc: clang
+            generator: "Unix Makefiles"
+
           - name: ubuntu-gcc
             os: ubuntu-latest
             os_label: Ubuntu
             cxx: g++
             cc: gcc
+            generator: "Unix Makefiles"
+
           - name: macos-clang
             os: macos-latest
             os_label: MacOS
             cxx: clang++
             cc: clang
-          - name: macos-clang
+            generator: "Unix Makefiles"
+
+          - name: macos-gcc
             os: macos-latest
             os_label: MacOS
             cxx: g++
             cc: gcc
-        #build_type: [Release, Debug]
-        build_type: [Debug]
+            generator: "Unix Makefiles"
+
+          - name: macos-clang
+            os: macos-latest
+            os_label: MacOS
+            cxx: clang++
+            cc: clang
+            generator: "Unix Makefiles"
+
+          - name: windows-msvc
+            os: windows-latest
+            os_label: Windows
+            cxx: cl.exe
+            cc: cl.exe
+            generator: "NMake Makefiles"
+
+        build_type: [Release, Debug]
 
     steps:
     - uses: actions/checkout@v2
@@ -61,14 +77,20 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
+        cmake -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
         #buildWithCMakeArgs: '-- -v'
 
-    - name: configure
+    - name: build
       run: |
         cd build
         cmake --build . --target all
         #buildWithCMakeArgs: '-- -v'
+      if: "!contains( matrix.os, 'windows')"
+    - name: dir
+      run: |
+        cd build
+        nmake
+      if: contains( matrix.os, 'windows')
 
     - name: run unit tests
       run: |
@@ -78,3 +100,8 @@ jobs:
         ls -l build/bin
         echo ${{ github.workspace }}/build/bin/unit_tests
         ${{ github.workspace }}/build/bin/unit_tests
+      if: "!contains( matrix.os, 'windows')"
+    - name: run unit tests
+      run: |
+        ${{ github.workspace }}/build/bin/unit_tests.exe
+      if: "contains( matrix.os, 'windows')"
