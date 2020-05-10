@@ -13,8 +13,9 @@ set(SRC_MATH_FILES
 #===============================================================================
 # Static libraries and executables
 #===============================================================================
+# Library "mathlib"
 add_library("mathlib" ${SRC_MATH_FILES})
 
+# Executable "mybin"
 add_executable("mybin" ${SRC_DIR}/main.cpp)
-
 target_link_libraries("mybin" PRIVATE "mathlib")

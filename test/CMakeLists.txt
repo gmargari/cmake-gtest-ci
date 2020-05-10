@@ -18,8 +18,6 @@ add_executable("unit_tests"
 	${TEST_DIR}/main.cpp
 	${TEST_MATH_FILES}
 	)
-
-# Executable dependencies
 target_link_libraries("unit_tests"
 	                  PRIVATE "mathlib"
 					  PRIVATE "gtest_main"
