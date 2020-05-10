@@ -13,7 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        name: [ubuntu-gcc, ubuntu-clang, macos-gcc, macos-clang, windows-msvc]
+        #name: [ubuntu-gcc, ubuntu-clang, macos-gcc, macos-clang, windows-msvc]
+        name: [ubuntu-gcc]
         include:
           - name: ubuntu-clang
             os: ubuntu-latest
@@ -22,40 +23,40 @@ jobs:
             cc: clang
             generator: "Unix Makefiles"
 
-          - name: ubuntu-gcc
-            os: ubuntu-latest
-            os_label: Ubuntu
-            cxx: g++
-            cc: gcc
-            generator: "Unix Makefiles"
+#          - name: ubuntu-gcc
+#            os: ubuntu-latest
+#            os_label: Ubuntu
+#            cxx: g++
+#            cc: gcc
+#            generator: "Unix Makefiles"
 
-          - name: macos-clang
-            os: macos-latest
-            os_label: MacOS
-            cxx: clang++
-            cc: clang
-            generator: "Unix Makefiles"
+#          - name: macos-clang
+#            os: macos-latest
+#            os_label: MacOS
+#            cxx: clang++
+#            cc: clang
+#            generator: "Unix Makefiles"
 
-          - name: macos-gcc
-            os: macos-latest
-            os_label: MacOS
-            cxx: g++
-            cc: gcc
-            generator: "Unix Makefiles"
+#          - name: macos-gcc
+#            os: macos-latest
+#            os_label: MacOS
+#            cxx: g++
+#            cc: gcc
+#            generator: "Unix Makefiles"
 
-          - name: macos-clang
-            os: macos-latest
-            os_label: MacOS
-            cxx: clang++
-            cc: clang
-            generator: "Unix Makefiles"
+#          - name: macos-clang
+#            os: macos-latest
+#            os_label: MacOS
+#            cxx: clang++
+#            cc: clang
+#            generator: "Unix Makefiles"
 
-          - name: windows-msvc
-            os: windows-latest
-            os_label: Windows
-            cxx: cl.exe
-            cc: cl.exe
-            generator: "NMake Makefiles"
+#          - name: windows-msvc
+#            os: windows-latest
+#            os_label: Windows
+#            cxx: cl.exe
+#            cc: cl.exe
+#            generator: "NMake Makefiles"
 
         build_type: [Release, Debug]
 
