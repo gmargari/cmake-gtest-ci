@@ -15,6 +15,14 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 
 configure_file(${CMAKE_MODULE_PATH}/CMakeLists.googletest.in googletest-download/CMakeLists.txt)
 
+# code coverage
+option(ENABLE_TEST_COVERAGE "Enable test coverage" OFF)
+
+if (ENABLE_TEST_COVERAGE)
+  include(CodeCoverage)
+  append_coverage_compiler_flags()
+endif()
+
 include_directories(src)
 add_subdirectory(src)
 
