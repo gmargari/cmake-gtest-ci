@@ -14,8 +14,6 @@ jobs:
       fail-fast: false
       matrix:
         name: [ubuntu-gcc, ubuntu-clang, macos-gcc, macos-clang, windows-msvc]
-        #name: [ubuntu-gcc]
-        # For Windows msvc, for Linux and macOS let's use the clang compiler, use gcc for Linux.
         include:
           - name: ubuntu-clang
             os: ubuntu-latest
@@ -62,46 +60,38 @@ jobs:
         build_type: [Release, Debug]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: "Checkout code"
+      uses: actions/checkout@v2
 
-    - uses: lukka/get-cmake@latest
+    - name: "Install cmake"
+      uses: lukka/get-cmake@latest
 
-    - uses: ilammy/msvc-dev-cmd@v1
+    - name: "Setup cmd tools for compilation (Windows only)"
+      uses: ilammy/msvc-dev-cmd@v1
 
-    - uses: lukka/set-shell-env@v1
-      with:
+    - name: "Configure"
+      env:
         CXX: ${{ matrix.cxx }}
         CC: ${{ matrix.cc }}
-
-    - name: configure
       run: |
         mkdir build
         cd build
         cmake -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
-        #buildWithCMakeArgs: '-- -v'
 
-    - name: build
+    - name: "Build code"  # Linux, Macos
       run: |
         cd build
         cmake --build . --target all
-        #buildWithCMakeArgs: '-- -v'
       if: "!contains( matrix.os, 'windows')"
-    - name: dir
+    - name: "Build code"  # Windows
       run: |
         cd build
         nmake
-      if: contains( matrix.os, 'windows')
+      if: "contains( matrix.os, 'windows')"
 
-    - name: run unit tests
-      run: |
-        pwd
-        ls -l
-        ls -l build
-        ls -l build/bin
-        echo ${{ github.workspace }}/build/bin/unit_tests
-        ${{ github.workspace }}/build/bin/unit_tests
+    - name: "Run unit tests"  # Linux, Macos
+      run: ${{ github.workspace }}/build/bin/unit_tests
       if: "!contains( matrix.os, 'windows')"
-    - name: run unit tests
-      run: |
-        ${{ github.workspace }}/build/bin/unit_tests.exe
+    - name: "Run unit tests"  # Windows
+      run: ${{ github.workspace }}/build/bin/unit_tests.exe
       if: "contains( matrix.os, 'windows')"
