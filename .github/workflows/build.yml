@@ -13,30 +13,35 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #name: [ubuntu-gcc, macos-clang, windows-msvc, ubuntu-clang]
-        name: [ubuntu-gcc]
+        name: [ubuntu-gcc, macos-clang, windows-msvc, ubuntu-clang]
+        #name: [ubuntu-gcc]
         # For Windows msvc, for Linux and macOS let's use the clang compiler, use gcc for Linux.
         include:
-#          - name: windows-msvc
-#            os: windows-latest
-#            os_label: Windows
-#            cxx: cl.exe
-#            cc: cl.exe
-#          - name: ubuntu-clang
-#            os: ubuntu-latest
-#            os_label: Ubuntu
-#            cxx: clang++
-#            cc: clang
+          - name: windows-msvc
+            os: windows-latest
+            os_label: Windows
+            cxx: cl.exe
+            cc: cl.exe
+          - name: ubuntu-clang
+            os: ubuntu-latest
+            os_label: Ubuntu
+            cxx: clang++
+            cc: clang
           - name: ubuntu-gcc
             os: ubuntu-latest
             os_label: Ubuntu
             cxx: g++
             cc: gcc
-#          - name: macos-clang
-#            os: macos-latest
-#            os_label: MacOS
-#            cxx: clang++
-#            cc: clang
+          - name: macos-clang
+            os: macos-latest
+            os_label: MacOS
+            cxx: clang++
+            cc: clang
+          - name: macos-clang
+            os: macos-latest
+            os_label: MacOS
+            cxx: g++
+            cc: gcc
         #build_type: [Release, Debug]
         build_type: [Debug]
 
@@ -52,15 +57,18 @@ jobs:
         CXX: ${{ matrix.cxx }}
         CC: ${{ matrix.cc }}
 
-    - name: configure and build
-      uses: lukka/run-cmake@v2.3
-      with:
-        cmakeListsOrSettingsJson: CMakeListsTxtAdvanced
-        cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-        cmakeAppendedArgs: '-GNinja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}'
-        buildWithCMakeArgs: '--target all -- -v'
-        buildDirectory: '${{ github.workspace }}/build/'
-        useShell: bash
+    - name: configure
+      run: |
+        mkdir build
+        cd build
+        cmake -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
+        #buildWithCMakeArgs: '-- -v'
+
+    - name: configure
+      run: |
+        cd build
+        cmake --build . --target all
+        #buildWithCMakeArgs: '-- -v'
 
     - name: run unit tests
       run: |
