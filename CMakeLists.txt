@@ -14,7 +14,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 include_directories(src)
 add_subdirectory(src)
 
-configure_file(CMakeLists.googletest.in googletest-download/CMakeLists.txt)
+configure_file(cmake/CMakeLists.googletest.in googletest-download/CMakeLists.txt)
 
 execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
         RESULT_VARIABLE result
