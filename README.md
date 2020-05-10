@@ -1,2 +1,5 @@
+![Build](https://github.com/gmargari/cccpp/workflows/Build/badge.svg)
+
 # cccpp
-CMake - CI - C++
+
+Template CMake project with Googletest and CI with GitHub actions.
