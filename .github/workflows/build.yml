@@ -74,15 +74,10 @@ jobs:
       env:
         CXX: ${{ matrix.cxx }}
         CC: ${{ matrix.cc }}
-      run: |
-        mkdir build
-        cd build
-        cmake -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
+      run: cmake -Bbuild -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
 
     - name: "Build code"  # Linux, Macos
-      run: |
-        cd build
-        cmake --build . --target all
+      run: cmake --build build --target all
       if: "!contains( matrix.os, 'windows')"
     - name: "Build code"  # Windows
       run: |
