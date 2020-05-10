@@ -13,8 +13,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #name: [ubuntu-gcc, ubuntu-clang, macos-gcc, macos-clang, windows-msvc]
-        name: [ubuntu-gcc]
+        #name: [ubuntu-clang, ubuntu-gcc, macos-clang, macos-gcc, windows-msvc]
+        name: [ubuntu-clang]
         include:
           - name: ubuntu-clang
             os: ubuntu-latest
@@ -44,13 +44,6 @@ jobs:
 #            cc: gcc
 #            generator: "Unix Makefiles"
 
-#          - name: macos-clang
-#            os: macos-latest
-#            os_label: MacOS
-#            cxx: clang++
-#            cc: clang
-#            generator: "Unix Makefiles"
-
 #          - name: windows-msvc
 #            os: windows-latest
 #            os_label: Windows
@@ -74,7 +67,7 @@ jobs:
       env:
         CXX: ${{ matrix.cxx }}
         CC: ${{ matrix.cc }}
-      run: cmake -Bbuild -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" ..
+      run: cmake -Bbuild -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
 
     - name: "Build code"  # Linux, Macos
       run: cmake --build build --target all
