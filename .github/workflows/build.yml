@@ -89,9 +89,8 @@ jobs:
         nmake
       if: "contains( matrix.os, 'windows')"
 
-    - name: "Run unit tests"  # Linux, Macos
-      run: ${{ github.workspace }}/build/bin/unit_tests
-      if: "!contains( matrix.os, 'windows')"
-    - name: "Run unit tests"  # Windows
-      run: ${{ github.workspace }}/build/bin/unit_tests.exe
-      if: "contains( matrix.os, 'windows')"
+    - name: "Run unit tests"
+      run: |
+        cd build
+        ctest
+
