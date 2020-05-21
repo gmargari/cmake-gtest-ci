@@ -1,4 +1,4 @@
-[![Build][build-badge]][build-link]]
+[![Build][build-badge]][build-link]
 
 # Cmake - Googletest - CI
 
