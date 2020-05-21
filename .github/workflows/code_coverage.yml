@@ -1,4 +1,4 @@
-name: Build
+name: Code coverage
 
 on:
   push:
@@ -10,8 +10,6 @@ jobs:
   job:
     name: Code coverage
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     steps:
     - name: "Checkout code"
