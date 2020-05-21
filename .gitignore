@@ -36,3 +36,6 @@ build/
 
 # CMake files
 CMakeLists.txt.user
+
+# Documentation
+docs/
