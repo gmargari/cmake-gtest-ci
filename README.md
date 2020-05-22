@@ -11,7 +11,7 @@ On each commit push or pull request the CI:
  - [builds](.github/workflows/build.yml) the code on a combination of OSes, compilers, and modes (debug, release)
  - runs tests
  - computes [code coverage](.github/workflows/code_coverage.yml) based on tests
- - uploads coverage results to codecov.io
+ - uploads coverage results to [codecov.io][codecov-link]
  - builds documentation with Doxygen and uploads it to [GitHub pages][docs-link]
 
 [build-badge]:     https://github.com/gmargari/cmake-gtest-ci/workflows/Build/badge.svg
