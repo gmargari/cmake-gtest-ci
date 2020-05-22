@@ -1,4 +1,5 @@
 [![Build][build-badge]][build-link]
+[![Docs][docs-badge]][docs-build-link]
 [![codecov][codecov-badge]][codecov-link]
 [![MIT License][license-badge]](LICENSE.md)
 
@@ -11,10 +12,14 @@ On each commit push or pull request the CI:
  - runs tests
  - computes [code coverage](.github/workflows/code_coverage.yml) based on tests
  - uploads coverage results to codecov.io
+ - builds documentation with Doxygen and uploads it to [GitHub pages][docs-link]
 
 [build-badge]:     https://github.com/gmargari/cmake-gtest-ci/workflows/Build/badge.svg
 [build-link]:      https://github.com/gmargari/cmake-gtest-ci/actions?query=workflow%3ABuild
+[docs-badge]:      https://github.com/gmargari/cmake-gtest-ci/workflows/Documentation/badge.svg
+[docs-build-link]: https://github.com/gmargari/cmake-gtest-ci/actions?query=workflow%3ADocumentation
 [codecov-badge]:   https://codecov.io/gh/gmargari/cmake-gtest-ci/branch/master/graph/badge.svg
 [codecov-link]:    https://codecov.io/gh/gmargari/cmake-gtest-ci
 [license-badge]:   https://img.shields.io/badge/license-MIT-007EC7.svg
 [template-link]:   https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
+[docs-link]:       https://gmargari.github.io/cmake-gtest-ci/
