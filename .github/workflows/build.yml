@@ -8,7 +8,7 @@ on:
 
 jobs:
   job:
-    name: ${{ matrix.os_label }}, ${{ matrix.cc }}, ${{ matrix.build_type }}
+    name: "${{ matrix.os_label }}, ${{ matrix.cc }}, ${{ matrix.build_type }}"
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -69,10 +69,10 @@ jobs:
         CC: ${{ matrix.cc }}
       run: cmake -Bbuild -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
 
-    - name: "Build code"  # Linux, Macos
+    - name: "Build code (Linux, MacOS)"
       run: cmake --build build --target all
       if: "!contains( matrix.os, 'windows')"
-    - name: "Build code"  # Windows
+    - name: "Build code (Windows)"
       run: |
         cd build
         nmake

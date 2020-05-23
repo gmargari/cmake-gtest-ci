@@ -8,7 +8,7 @@ on:
 
 jobs:
   job:
-    name: Documentation
+    name: "Documentation"
     runs-on: ubuntu-latest
 
     steps:
