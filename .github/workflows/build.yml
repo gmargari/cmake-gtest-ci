@@ -71,4 +71,4 @@ jobs:
       run: |
         cd build
         set CTEST_OUTPUT_ON_FAILURE=1
-        ctest -C Debug -VV
+        ctest -VV
