@@ -15,11 +15,11 @@ On each commit push or pull request the CI:
  - builds [documentation](.github/workflows/documentation.yml) with Doxygen 
  - uploads documentation to [GitHub pages][docs-link]
 
-[build-badge]:     https://img.shields.io/github/workflow/status/gmargari/cmake-gtest-ci/Build?label=build&style=plastic
+[build-badge]:     https://img.shields.io/github/workflow/status/gmargari/cmake-gtest-ci/Build?label=build&style=plastic&logo=github
 [build-link]:      https://github.com/gmargari/cmake-gtest-ci/actions?query=workflow%3ABuild
-[docs-badge]:      https://img.shields.io/github/workflow/status/gmargari/cmake-gtest-ci/Documentation?label=docs&style=plastic
+[docs-badge]:      https://img.shields.io/github/workflow/status/gmargari/cmake-gtest-ci/Documentation?label=docs&style=plastic&logo=github
 [docs-build-link]: https://github.com/gmargari/cmake-gtest-ci/actions?query=workflow%3ADocumentation
-[codecov-badge]:   https://img.shields.io/codecov/c/github/gmargari/cmake-gtest-ci?label=coverage&style=plastic
+[codecov-badge]:   https://img.shields.io/codecov/c/github/gmargari/cmake-gtest-ci?label=coverage&style=plastic&logo=codecov
 [codecov-link]:    https://codecov.io/gh/gmargari/cmake-gtest-ci
 [license-badge]:   https://img.shields.io/github/license/gmargari/cmake-gtest-ci?label=license&style=plastic&color=blue
 [template-link]:   https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template
