@@ -13,43 +13,37 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #name: [ubuntu-clang, ubuntu-gcc, macos-clang, macos-gcc, windows-msvc]
-        name: [ubuntu-clang]
+        name: [ubuntu-clang, ubuntu-gcc, macos-clang, macos-gcc, windows-msvc]
         include:
           - name: ubuntu-clang
             os: ubuntu-latest
             os_label: Ubuntu
             cxx: clang++
             cc: clang
-            generator: "Unix Makefiles"
 
-#          - name: ubuntu-gcc
-#            os: ubuntu-latest
-#            os_label: Ubuntu
-#            cxx: g++
-#            cc: gcc
-#            generator: "Unix Makefiles"
+          - name: ubuntu-gcc
+            os: ubuntu-latest
+            os_label: Ubuntu
+            cxx: g++
+            cc: gcc
 
-#          - name: macos-clang
-#            os: macos-latest
-#            os_label: MacOS
-#            cxx: clang++
-#            cc: clang
-#            generator: "Unix Makefiles"
+          - name: macos-clang
+            os: macos-latest
+            os_label: MacOS
+            cxx: clang++
+            cc: clang
 
-#          - name: macos-gcc
-#            os: macos-latest
-#            os_label: MacOS
-#            cxx: g++
-#            cc: gcc
-#            generator: "Unix Makefiles"
+          - name: macos-gcc
+            os: macos-latest
+            os_label: MacOS
+            cxx: g++
+            cc: gcc
 
-#          - name: windows-msvc
-#            os: windows-latest
-#            os_label: Windows
-#            cxx: cl.exe
-#            cc: cl.exe
-#            generator: "NMake Makefiles"
+          - name: windows-msvc
+            os: windows-latest
+            os_label: Windows
+            cxx: cl.exe
+            cc: cl.exe
 
         build_type: [Release, Debug]
 
@@ -67,14 +61,10 @@ jobs:
       env:
         CXX: ${{ matrix.cxx }}
         CC: ${{ matrix.cc }}
-      run: cmake -B build -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
+      run: cmake -B build -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
 
-    - name: "Build code (Linux, MacOS)"
+    - name: "Build code"
       run: cmake --build build
-      if: "!contains( matrix.os, 'windows')"
-    - name: "Build code (Windows)"
-      run: cmake --build build
-      if: "contains( matrix.os, 'windows')"
 
     - name: "Run unit tests"
       run: |
