@@ -1,0 +1,50 @@
+---
+Checks: '*,
+	,-cert-err58-cpp,
+	,-cppcoreguidelines-owning-memory,
+	,-cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+	,-cppcoreguidelines-pro-bounds-constant-array-index,
+	,-cppcoreguidelines-pro-type-vararg,
+	,-fuchsia-*,
+	,-google-runtime-references,
+	,-hicpp-no-array-decay,
+	,-hicpp-vararg'
+AnalyzeTemporaryDtors: false
+...
+#===============================================================================
+# Disabled checks:
+#
+# - cert-err58-cpp:
+#     "initialization of 'var' with static storage duration may throw an
+#      exception that cannot be caught"
+#       => Warning on each GTest TEST() macro.
+#
+# - cppcoreguidelines-owning-memory:
+#     "initializing non-owner 'xxx' with a newly created 'gsl::owner<>'"
+#       => Warning on each GTest TEST() macro. Don't want dependency on gsl
+#          library.
+#
+# - cppcoreguidelines-pro-bounds-array-to-pointer-decay:
+# - hicpp-no-array-decay:
+#     "do not implicitly decay an array into a pointer; consider using
+#      gsl::array_view or an explicit cast instead"
+#       => Limited use and many false positives, including asserts.
+#
+# - cppcoreguidelines-pro-bounds-constant-array-index:
+#     "do not use array subscript when the index is not an integer constant
+#      expression; use gsl::at() instead"
+#       => Don't want to add dependency on gsl library.
+#          TODO(gmargari): consider fixing these warnings.
+#
+# - cppcoreguidelines-pro-type-vararg:
+# - hicpp-vararg:
+#     "do not call c-style vararg functions"
+#       => Warning on each printf()-like function, which use vararg.
+#
+# - fuchsia-*:
+#       => Too strict.
+#
+# - google-runtime-references:
+#     "non-const reference parameter 'var', make it const or use a pointer"
+#       => We don't want to use pointers in place of non-const references.
+#===============================================================================
