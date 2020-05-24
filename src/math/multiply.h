@@ -1,7 +1,7 @@
 #pragma once
 
 /// Multiply two double numbers
-double multiply(double x, double y);
+double multiply(const double x, const double y);
 
 //! Divide two double numbers
-double divide(double x, double y);
+double divide(const double x, const double y);

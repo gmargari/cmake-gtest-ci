@@ -6,7 +6,7 @@
  *  @param     y a double number
  *  @return    The result of adding @p y to @p x
  */
-double add(double x, double y);
+double add(const double x, const double y);
 
 /**
  *  @brief     Substract two numbers
@@ -17,4 +17,4 @@ double add(double x, double y);
  *  @param[in] y a double number
  *  @return    The result of substracting @p y from @p x
  */
-double substract(double x, double y);
+double substract(const double x, const double y);
