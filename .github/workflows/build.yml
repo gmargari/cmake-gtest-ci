@@ -67,15 +67,13 @@ jobs:
       env:
         CXX: ${{ matrix.cxx }}
         CC: ${{ matrix.cc }}
-      run: cmake -Bbuild -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
+      run: cmake -B build -G"${{ matrix.generator }}" -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
 
     - name: "Build code (Linux, MacOS)"
-      run: cmake --build build --target all
+      run: cmake --build build
       if: "!contains( matrix.os, 'windows')"
     - name: "Build code (Windows)"
-      run: |
-        cd build
-        nmake
+      run: cmake --build build
       if: "contains( matrix.os, 'windows')"
 
     - name: "Run unit tests"
