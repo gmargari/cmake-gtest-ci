@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['substract_19',['substract',['../add_8cpp.html#a693f1bd2b102456ccdeda48a976216f3',1,'substract(const double x, const double y):&#160;add.cpp'],['../add_8h.html#a693f1bd2b102456ccdeda48a976216f3',1,'substract(const double x, const double y):&#160;add.cpp']]]
+  ['substract_19',['substract',['../add_8cpp.html#a40c116d69ca4f5c883b73e95481371df',1,'substract(double x, double y):&#160;add.cpp'],['../add_8h.html#a40c116d69ca4f5c883b73e95481371df',1,'substract(double x, double y):&#160;add.cpp']]]
 ];
