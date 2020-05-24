@@ -10,5 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "clang-tidy check"
-        uses: muxee/clang-tidy-action@0.0.1-rc1
+      - name: "clang-tidy / cppcheck"
+        uses: smay1613/clang-tidy-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
