@@ -1,9 +1,9 @@
 #include "math/multiply.h"
 
-double multiply(double x, double y) {
+double multiply(const double x, const double y) {
     return x * y;
 }
 
-double divide(double x, double y) {
+double divide(const double x, const double y) {
     return x / y;
 }

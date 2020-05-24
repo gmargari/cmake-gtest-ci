@@ -1,9 +1,9 @@
 #include "math/add.h"
 
-double add(double x, double y) {
+double add(const double x, const double y) {
     return x + y;
 }
 
-double substract(double x, double y) {
+double substract(const double x, const double y) {
     return x - y;
 }
