@@ -1,5 +1,5 @@
 var multiply_8h =
 [
-    [ "divide", "multiply_8h.html#ad33f6b01ccca4e179288ca2928cff8ef", null ],
-    [ "multiply", "multiply_8h.html#abea3777e3914a8bfa8fee7fa1ddfb9ff", null ]
+    [ "divide", "multiply_8h.html#a28d03d6c0a6664e51b663a90e5b86c57", null ],
+    [ "multiply", "multiply_8h.html#a6741d876a1e507d100d01dab98ea2a0b", null ]
 ];
