@@ -54,10 +54,6 @@ jobs:
     - name: "Install cmake"
       uses: lukka/get-cmake@latest
 
-    ##### Maybe not needed?
-    - name: "Setup cmd tools for compilation (Windows only)"
-      uses: ilammy/msvc-dev-cmd@v1
-
     - name: "Configure"
       env:
         CXX: ${{ matrix.cxx }}
