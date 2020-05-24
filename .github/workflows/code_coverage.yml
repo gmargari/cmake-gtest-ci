@@ -22,7 +22,7 @@ jobs:
       run: sudo apt-get install lcov
 
     - name: "Configure"
-      run: cmake -Bbuild -DCMAKE_BUILD_TYPE=Debug -DENABLE_TEST_COVERAGE=ON
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_TEST_COVERAGE=ON
 
     - name: "Run code coverage"
       run: |
