@@ -55,10 +55,7 @@ jobs:
       uses: lukka/get-cmake@latest
 
     - name: "Configure"
-      env:
-        CXX: ${{ matrix.cxx }}
-        CC: ${{ matrix.cc }}
-      run: cmake -B build -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}"
+      run: cmake -B build -DCMAKE_BUILD_TYPE="${{ matrix.build_type }}" -DCMAKE_CXX_COMPILER="clang++" -DCMAKE_C_COMPILER="${{ matrix.cc }}"
 
     - name: "Build code"
       run: cmake --build build --config "${{ matrix.build_type }}"
