@@ -11,7 +11,7 @@ Checks: '*,
 	,-hicpp-vararg'
 AnalyzeTemporaryDtors: false
 ...
-#===============================================================================
+#
 # Disabled checks:
 #
 # - cert-err58-cpp:
@@ -47,4 +47,4 @@ AnalyzeTemporaryDtors: false
 # - google-runtime-references:
 #     "non-const reference parameter 'var', make it const or use a pointer"
 #       => We don't want to use pointers in place of non-const references.
-#===============================================================================
+#
