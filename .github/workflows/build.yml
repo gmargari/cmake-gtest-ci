@@ -67,4 +67,4 @@ jobs:
       run: |
         cd build
         set CTEST_OUTPUT_ON_FAILURE=1
-        ctest -VV
+        ctest -C "${{ matrix.build_type }}" -VV
