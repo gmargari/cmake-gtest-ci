@@ -69,5 +69,5 @@ jobs:
     - name: "Run unit tests"
       run: |
         cd build
-        ctest -VV
-
+        set CTEST_OUTPUT_ON_FAILURE=1
+        ctest -C Debug -VV
