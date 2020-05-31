@@ -8,13 +8,16 @@
 
 Minimal [template][template-link] CMake project with Googletest, and Continuous Integration with GitHub actions.
 
-On each commit push or pull request the CI:
- - [builds](.github/workflows/build.yml) the code on a combination of OSes, compilers, and modes (debug, release)
- - runs tests
- - computes [code coverage](.github/workflows/code_coverage.yml) based on tests
- - uploads code coverage results to [codecov.io][codecov-link] and [coveralls.io][coveralls-link]
- - builds [documentation](.github/workflows/documentation.yml) with Doxygen 
- - uploads documentation to [GitHub pages][docs-link]
+On each commit push or pull request, the CI does the following:
+ - **Build and test**
+   - builds the code on a combination of OSes (Linux, Windows, Mac), compilers (gcc, clang, cl.exe), and modes (release, debug)
+   - runs tests on each build combination
+ - **Code coverage**
+   - computes code coverage based on tests
+   - uploads code coverage results to [codecov.io][codecov-link] and [coveralls.io][coveralls-link]
+ - **Documentation**
+   - builds documentation with Doxygen 
+   - uploads documentation to [GitHub pages][docs-link]
 
 [build-badge]:     https://img.shields.io/github/workflow/status/gmargari/cmake-gtest-ci/Build?label=build&style=plastic&logo=github
 [build-link]:      https://github.com/gmargari/cmake-gtest-ci/actions?query=workflow%3ABuild
